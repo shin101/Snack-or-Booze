@@ -7,11 +7,20 @@ import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
 import Menu from "./FoodMenu";
 import Food from "./FoodItem";
+import NewFoodForm from './NewFoodForm'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [snacks, setSnacks] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  
+  const addFood = foodData => {
+    if (foodData.type === 'snacks') {
+      setSnacks(snacks => [...snacks, foodData]);
+    } else {
+      setDrinks(drinks => [...drinks, foodData]);
+    }
+  }
 
   useEffect(() => {
     async function getSnacks() {
@@ -56,6 +65,9 @@ function App() {
             </Route>
             <Route path="/drinks/:id">
               <Food items={drinks} cantFind="/drinks" />
+            </Route>
+            <Route path="/newfoodform">
+              <NewFoodForm addFood={addFood} />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>

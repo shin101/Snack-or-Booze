@@ -21,7 +21,7 @@ function NavBar() {
           </NavItem>
 
           <NavItem>
-            <NavLink to="/drinks">Add Food</NavLink>
+            <NavLink to="/newfoodform">Add Food</NavLink>
           </NavItem>
         </Nav>
       </Navbar>
