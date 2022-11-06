@@ -11,13 +11,8 @@ import {
 } from "reactstrap";
 
 function FoodMenu({ snacks, drinks }) {
-  let type;
-
-  if (snacks) {
-    type = "Snacks"
-  } else {
-    type = "Drinks"
-  }; 
+  const type = snacks ? 'Snacks' : 'Drinks';
+  // depending on route/url, renders snack or drinks page
 
   return (
     <section className="col-md-4">
@@ -31,9 +26,9 @@ function FoodMenu({ snacks, drinks }) {
             bulk of the card's content.
           </CardText>
           <ListGroup>
-            {snacks.map(snack => (
-              <Link to={`/snacks/${snack.id}`} key={snack.id}>
-                <ListGroupItem>{snack.name}</ListGroupItem>
+            {(snacks || drinks).map(food => (
+              <Link to={`/${type.toLowerCase()}/${food.id}`} key={food.id}>
+                <ListGroupItem>{food.name}</ListGroupItem>
               </Link>
             ))}
           </ListGroup>

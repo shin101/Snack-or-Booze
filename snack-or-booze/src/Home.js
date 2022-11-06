@@ -13,6 +13,8 @@ function Home() {
           </CardTitle>
         </CardBody>
       </Card>
+      <p>Food : </p>
+      <p>Drinks : </p>
     </section>
   );
 }

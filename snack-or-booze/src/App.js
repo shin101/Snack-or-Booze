@@ -22,6 +22,15 @@ function App() {
     getSnacks();
   }, []);
 
+  useEffect(() => {
+    async function getDrinks() {
+      let drinks = await SnackOrBoozeApi.getDrinks();
+      setDrinks(drinks);
+      setIsLoading(false);
+    }
+    getDrinks();
+  }, []);
+
   if (isLoading) {
     return <p>Loading &hellip;</p>;
   }
