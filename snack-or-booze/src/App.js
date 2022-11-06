@@ -11,6 +11,7 @@ import Snack from "./FoodItem";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [snacks, setSnacks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     async function getSnacks() {
@@ -39,6 +40,12 @@ function App() {
             </Route>
             <Route path="/snacks/:id">
               <Snack items={snacks} cantFind="/snacks" />
+            </Route>
+            <Route exact path="/drinks">
+              <Menu drinks={drinks} title="Drinks" />
+            </Route>
+            <Route path="/drinks/:id">
+              <Snack items={drinks} cantFind="/drinks" />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>

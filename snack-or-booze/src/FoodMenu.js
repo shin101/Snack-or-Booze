@@ -10,13 +10,21 @@ import {
   ListGroupItem
 } from "reactstrap";
 
-function FoodMenu({ snacks }) {
+function FoodMenu({ snacks, drinks }) {
+  let type;
+
+  if (snacks) {
+    type = "Snacks"
+  } else {
+    type = "Drinks"
+  }; 
+
   return (
     <section className="col-md-4">
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">
-            Food Menu
+            {type} Menu
           </CardTitle>
           <CardText>
             Some quick example text to build on the card title and make up the
