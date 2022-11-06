@@ -6,7 +6,7 @@ import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
 import Menu from "./FoodMenu";
-import Snack from "./FoodItem";
+import Food from "./FoodItem";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,19 +42,20 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/">
-              <Home snacks={snacks} />
+              {/* must pass in both snacks and drinks to render # of items on homepage  */}
+              <Home snacks={snacks} drinks={drinks} />
             </Route>
             <Route exact path="/snacks">
               <Menu snacks={snacks} title="Snacks" />
             </Route>
             <Route path="/snacks/:id">
-              <Snack items={snacks} cantFind="/snacks" />
+              <Food items={snacks} cantFind="/snacks" />
             </Route>
             <Route exact path="/drinks">
               <Menu drinks={drinks} title="Drinks" />
             </Route>
             <Route path="/drinks/:id">
-              <Snack items={drinks} cantFind="/drinks" />
+              <Food items={drinks} cantFind="/drinks" />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>
